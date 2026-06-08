@@ -21,12 +21,11 @@ function App() {
   return (
     <div>
       <h1>Parent Component</h1>
-
       {isLoggedIn ? (
-        <p>You are logged in!</p>       
+        <p>You are logged in!</p>
       ) : (
         <LoginForm
-          isLoggedIn={isLoggedIn}       {/* ✅ pass state down to child */}
+          isLoggedIn={isLoggedIn}
           handleLogin={() => setIsLoggedIn(true)}
         />
       )}
