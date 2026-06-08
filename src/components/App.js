@@ -1,18 +1,31 @@
 import React, { useState } from "react";
-import LoginForm from "./Loginform";
+
+function LoginForm({ handleLogin }) {
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleLogin();
+      }}
+    >
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
   return (
     <div>
+      <h1>Parent Component</h1>
+
       {isLoggedIn ? (
-        <h1>Welcome User</h1>
+        <h2>User Logged In</h2>
       ) : (
-        <LoginForm handleLogin={handleLogin} />
+        <LoginForm
+          handleLogin={() => setIsLoggedIn(true)}
+        />
       )}
     </div>
   );
