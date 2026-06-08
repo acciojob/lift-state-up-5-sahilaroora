@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function LoginForm({ handleLogin }) {
+function LoginForm({ isLoggedIn, handleLogin }) {
   const submitHandler = (e) => {
     e.preventDefault();
     handleLogin();
@@ -23,9 +23,12 @@ function App() {
       <h1>Parent Component</h1>
 
       {isLoggedIn ? (
-        <h2>Logged In</h2>
+        <p>You are logged in!</p>       
       ) : (
-        <LoginForm handleLogin={() => setIsLoggedIn(true)} />
+        <LoginForm
+          isLoggedIn={isLoggedIn}       {/* ✅ pass state down to child */}
+          handleLogin={() => setIsLoggedIn(true)}
+        />
       )}
     </div>
   );
